@@ -2,7 +2,7 @@ import { Card, Button } from "react-bootstrap";
 
 const Noticia = ({ noticiaProps }) => {
   return (
-    <div className="h-100 my-3 px-4">
+    <div className="h-100 my-3 p-md-2">
       <Card className="h-100 d-flex flex-column rounded-3 shadow">
        <div className="contenedorImgNoticia">
         <img
