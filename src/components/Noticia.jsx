@@ -1,4 +1,5 @@
 import { Card, Button } from "react-bootstrap";
+import imagen from "../img/noImage.png";
 
 const Noticia = ({ noticiaProps }) => {
   return (
@@ -7,8 +8,8 @@ const Noticia = ({ noticiaProps }) => {
         <div className="contenedorImgNoticia">
           <img
             className="imgNoticia rounded-3"
-            src={noticiaProps.image_url}
-            alt={noticiaProps.title}
+            src={noticiaProps.image_url || imagen}
+            alt={noticiaProps.title || "Sin descripcion"}
           />
         </div>
 
@@ -23,6 +24,7 @@ const Noticia = ({ noticiaProps }) => {
         <div className="card-footer p-2 rounded-2">
           <a
             href={noticiaProps.link}
+             target="_blank"
             className="btn btn-primary w-100 link-light"
           >
             Saber más
