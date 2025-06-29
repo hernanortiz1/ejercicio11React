@@ -1,24 +1,26 @@
 import Formulario from "./components/Formulario";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Button, Spinner } from "react-bootstrap";
+import { useEffect, useState } from "react";
 
 function App() {
- 
+  const [noticia, setNoticia] = useState({}); 
 
   return (
     <>
-       <main className="bg-secondary-subtle">
-        <h1 className="my-3 text-center fw-bold">
+      <main className="bg-secondary-subtle ">
+        <h1 className="my-3 text-center fw-bold shadow py-3 bg-white">
           Noticias
         </h1>
         <div className="container">
-          <Formulario />
+          <Formulario noticia={noticia}/>
         </div>
       </main>
       <footer className="bg-dark text-light text-center py-3">
         &copy; Todos los derechos reservados
       </footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
