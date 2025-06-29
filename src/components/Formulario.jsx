@@ -3,6 +3,30 @@ import ListaNoticias from "./ListaNoticias";
 import { useEffect, useState } from "react";
 
 const Formulario = () => {
+  const [categoria, setCategoria] = useState("");
+  const [noticia, setNoticia] = useState([]);
+
+  useEffect(() => {
+    if (categoria !== "") {
+      obtenerNoticia();
+    }
+  }, [categoria]);
+
+  const obtenerNoticia = async () => {
+    try {
+      const respuesta = await fetch(
+        `https://newsdata.io/api/1/news?apikey=pub_b337209814aa4936a8bbd412055a9faf&category=${categoria}&language=es`
+      );
+
+      if (respuesta.status === 200) {
+        const datos = await respuesta.json();
+        console.log(datos.results);
+        setNoticia(datos.results);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
