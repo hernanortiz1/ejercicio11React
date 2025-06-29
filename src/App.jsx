@@ -1,11 +1,7 @@
 import Formulario from "./components/Formulario";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Button, Spinner } from "react-bootstrap";
-import { useEffect, useState } from "react";
 
 function App() {
-  const [noticia, setNoticia] = useState({}); 
-
   return (
     <>
       <main className="bg-secondary-subtle ">
@@ -13,7 +9,7 @@ function App() {
           Noticias
         </h1>
         <div className="container">
-          <Formulario noticia={noticia}/>
+          <Formulario />
         </div>
       </main>
       <footer className="bg-dark text-light text-center py-3">

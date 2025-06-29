@@ -1,4 +1,4 @@
-const Noticia = ({ datosProps }) => {
+const Noticia = ({ noticiaProps }) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
