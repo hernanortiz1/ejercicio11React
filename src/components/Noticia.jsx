@@ -17,7 +17,7 @@ const Noticia = ({ noticiaProps }) => {
           <Card.Text className="text-start fs-5">{noticiaProps.description}</Card.Text>
         </Card.Body>
          <div className="card-footer p-2 rounded-2">
-            <a href={noticiaProps.link} class="btn btn-primary w-100 link-light">
+            <a href={noticiaProps.link} className="btn btn-primary w-100 link-light">
             Saber más
           </a>
           </div>
