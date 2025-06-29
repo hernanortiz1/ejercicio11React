@@ -1,10 +1,12 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ListaNoticias from "./ListaNoticias";
 import { useEffect, useState } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const Formulario = () => {
   const [categoria, setCategoria] = useState("");
   const [noticia, setNoticia] = useState([]);
+  const [mostrarSpinner, setMostrarSpinner] = useState(false);
 
   useEffect(() => {
     if (categoria !== "") {
@@ -14,6 +16,7 @@ const Formulario = () => {
 
   const obtenerNoticia = async () => {
     try {
+      setMostrarSpinner(true);
       const respuesta = await fetch(
         `https://newsdata.io/api/1/news?apikey=pub_b337209814aa4936a8bbd412055a9faf&category=${categoria}&language=es`
       );
@@ -22,6 +25,7 @@ const Formulario = () => {
         const datos = await respuesta.json();
         console.log(datos.results);
         setNoticia(datos.results);
+        setMostrarSpinner(false);
       }
     } catch (error) {
       console.error(error);
@@ -56,7 +60,15 @@ const Formulario = () => {
         </Form.Group>
       </section>
       <section className="mt-4">
-        <ListaNoticias noticiaProps={noticia} />
+        {mostrarSpinner ? (
+          <div className="my-4 d-flex justify-content-center align-items-center">
+            <ScaleLoader color="#0d6efd" loading={mostrarSpinner} size={50} />
+          </div>
+        ) : noticia.length === 0 ? (
+          <p className="text-center fs-3">No hay noticias para mostrar.</p>
+        ) : (
+          <ListaNoticias noticiaProps={noticia} />
+        )}
       </section>
     </div>
   );
