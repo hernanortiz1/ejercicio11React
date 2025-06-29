@@ -8,7 +8,7 @@ function App() {
         <h1 className="my-3 text-center fw-bold shadow py-3 bg-white">
           Noticias
         </h1>
-        <div className="container">
+        <div>
           <Formulario />
         </div>
       </main>

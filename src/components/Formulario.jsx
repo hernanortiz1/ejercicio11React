@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Formulario = () => {
   const [categoria, setCategoria] = useState("");
-  const [noticia, setNoticia] = useState({});
+  const [noticia, setNoticia] = useState([]);
 
   useEffect(() => {
     if (categoria !== "") {
@@ -12,7 +12,7 @@ const Formulario = () => {
     }
   }, [categoria]);
 
-  constobtenerNoticia = async () => {
+  const obtenerNoticia = async () => {
     try {
       //   setMostrarSpinner(true);
       const respuesta = await fetch(
@@ -23,9 +23,9 @@ const Formulario = () => {
 
       if (respuesta.status === 200) {
         const datos = await respuesta.json();
-        console.log(datos[0]);
+        console.log(datos.results);
         // guardar dentro del state
-        setFrase(datos[0]);
+        setNoticia(datos.results);
         //actualizar spinner
         // setMostrarSpinner(false);
       }
@@ -36,7 +36,7 @@ const Formulario = () => {
 
   return (
     <div>
-      <section className="p-3 border rounded-3 bg-white">
+      <section className="p-3 border rounded-3 bg-white container">
         <Form.Group>
           <Form.Label className="fs-4 d-flex justify-content-center">
             Seleccione categoria
